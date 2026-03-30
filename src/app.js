@@ -37,6 +37,15 @@ app.get('/api/health', (req, res) => {
 // app.use('/api/categorias', require('./routes/categoria.routes'));
 // app.use('/api/productos',  require('./routes/producto.routes'));
 app.use('/api/auth', require('./routes/auth.routes'));
+app.use('/api/categorias', require('./routes/categoria.routes'));
+app.use('/api/marcas', require('./routes/marca.routes'));
+app.use('/api/productos', require('./routes/producto.routes'));
+
+// Rutas admin — protegidas
+app.use('/api/admin/marcas', require('./routes/admin/marca.admin.routes'));
+app.use('/api/admin/productos', require('./routes/admin/producto.admin.routes'));
+
+
 
 
 // ── Middleware de errores global — siempre al final ────────

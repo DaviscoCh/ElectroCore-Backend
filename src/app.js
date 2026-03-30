@@ -36,6 +36,8 @@ app.get('/api/health', (req, res) => {
 // (las iremos agregando aquí conforme creemos cada módulo)
 // app.use('/api/categorias', require('./routes/categoria.routes'));
 // app.use('/api/productos',  require('./routes/producto.routes'));
+app.use('/api/auth', require('./routes/auth.routes'));
+
 
 // ── Middleware de errores global — siempre al final ────────
 app.use((err, req, res, next) => {

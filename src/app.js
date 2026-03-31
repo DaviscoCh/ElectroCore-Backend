@@ -40,6 +40,7 @@ app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/categorias', require('./routes/categoria.routes'));
 app.use('/api/marcas', require('./routes/marca.routes'));
 app.use('/api/productos', require('./routes/producto.routes'));
+app.use('/api/carrito', require('./routes/carrito.routes'));
 
 // Rutas admin — protegidas
 app.use('/api/admin/marcas', require('./routes/admin/marca.admin.routes'));

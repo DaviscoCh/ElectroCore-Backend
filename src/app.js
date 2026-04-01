@@ -42,11 +42,16 @@ app.use('/api/marcas', require('./routes/marca.routes'));
 app.use('/api/productos', require('./routes/producto.routes'));
 app.use('/api/carrito', require('./routes/carrito.routes'));
 app.use('/api/pedidos',       require('./routes/pedido.routes'));
+app.use('/api/favoritos',        require('./routes/favorito.routes'));
+app.use('/api/resenas',          require('./routes/resena.routes'));
+app.use('/api/zonas',            require('./routes/zona.routes'));
 
 // Rutas admin — protegidas
 app.use('/api/admin/marcas', require('./routes/admin/marca.admin.routes'));
 app.use('/api/admin/productos', require('./routes/admin/producto.admin.routes'));
 app.use('/api/admin/pedidos', require('./routes/admin/pedido.admin.routes'));
+app.use('/api/admin/resenas',    require('./routes/admin/resena.admin.routes'));
+app.use('/api/admin/zonas',      require('./routes/admin/zona.admin.routes'));
 
 
 // ── Middleware de errores global — siempre al final ────────

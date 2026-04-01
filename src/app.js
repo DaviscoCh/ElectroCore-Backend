@@ -45,6 +45,7 @@ app.use('/api/pedidos',       require('./routes/pedido.routes'));
 app.use('/api/favoritos',        require('./routes/favorito.routes'));
 app.use('/api/resenas',          require('./routes/resena.routes'));
 app.use('/api/zonas',            require('./routes/zona.routes'));
+app.use('/api/notificaciones', require('./routes/notificacion.routes'));
 
 // Rutas admin — protegidas
 app.use('/api/admin/marcas', require('./routes/admin/marca.admin.routes'));

@@ -2,6 +2,7 @@ const pedidoModel = require('../models/pedido.models');
 const facturaModel = require('../models/factura.models');
 const carritoModel = require('../models/carrito.models');
 const emailService = require('./email.service');
+const notificacionService = require('./notificacion.service');
 const db = require('../config/db');
 
 const IVA = 0.15; // 15% IVA Ecuador
@@ -90,6 +91,14 @@ exports.crearPedido = async (id_usuario, datos) => {
 
         await client.query('COMMIT');
 
+        // Crear notificación del pedido
+        await notificacionService.crear({
+            id_usuario,
+            tipo: 'pedido',
+            titulo: `Pedido ${numero_pedido} recibido`,
+            mensaje: `Tu pedido por $${total} está siendo procesado.`
+        });
+
         // 6. Email de confirmación (no bloqueante)
         const usuarioResult = await db.query(
             `SELECT u.correo, p.nombres 
@@ -141,7 +150,7 @@ exports.getAllPedidos = async (filtros) => {
 };
 
 exports.updateEstado = async (id_pedido, estado) => {
-    const estadosValidos = ['pendiente','confirmado','preparando','enviado','entregado','cancelado'];
+    const estadosValidos = ['pendiente', 'confirmado', 'preparando', 'enviado', 'entregado', 'cancelado'];
     if (!estadosValidos.includes(estado)) {
         const err = new Error('Estado no válido');
         err.status = 400;
